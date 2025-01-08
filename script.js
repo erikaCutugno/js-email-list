@@ -7,12 +7,19 @@ const email = function(){
     emailList += `<li>${response.data.response}</li>`
     emailListElm.innerHTML = emailList
     })
+    .catch(function (error) {
+        emailListElm.innerHTML = error.message
+      })
+    .finally(function () {
+        loadingElm.classList.add("d-none")
+      });
 }
 }
 // DOM ELEMENTS
 
 const emailListElm = document.getElementById("email-list")
 const btnElm = document.getElementById("btn")
+const loadingElm = document.getElementById("loading")
 
 // EVENTS
 email();
